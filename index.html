@@ -1,758 +1,721 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Jenkis Project</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
- body{
-   font-family: 'Poppins', sans-serif;
-   font-weight: 300;
-   font-size: 15px;
-   line-height: 1.6;
-   color: #fff;
-   background-color: #1f2029;
-   overflow: hidden;
-   height: 100vh;
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
-   perspective: 800px;
- }
- a {
-   cursor: pointer;
- }
- a:hover {
-   text-decoration: none;
- }
- ::selection {
-   color: #c4c3ca;
-   background-color: #000;
- }
- ::-moz-selection {
-   color: #c4c3ca;
-   background-color: #000;
- }
- 
- /* #Cursor
- ================================================== */
- 
- .cursor,
- .cursor2,
- .cursor3{
-   position: fixed;
-   border-radius: 50%;	
-   transform: translateX(-50%) translateY(-50%);
-   pointer-events: none;
-   left: -100px;
-   top: 50%;
-   mix-blend-mode: difference;
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
- }
- .cursor{
-   background-color: #fff;
-   height: 0;
-   width: 0;
-   z-index: 99999;
- }
- .cursor2,.cursor3{
-   height: 36px;
-   width: 36px;
-   z-index:99998;
-   -webkit-transition:all 0.3s ease-out;
-   transition:all 0.3s ease-out
- }
- .cursor2.hover,
- .cursor3.hover{
-   -webkit-transform:scale(2) translateX(-25%) translateY(-25%);
-   transform:scale(2) translateX(-25%) translateY(-25%);
-   border:none
- }
- .cursor2{
-   border: 2px solid #fff;
- }
- .cursor2.hover{
-   background: rgba(255,255,255,1);
-   border-color: transparent;
- }
- 
- @media screen and (max-width: 1200px){
-   .cursor,.cursor2,.cursor3{
-     display: none
-   }
- }
- 
- /* #Primary style
- ================================================== */
- 
- .hero-section {
-     position: relative;
-   width: 100%;
-   display: block;
-   overflow: hidden;
-   height: 100vh;
-   background-image: url('https://wallpapers.com/images/hd/dark-aesthetic-cloud-storage-hash-codes-graphic-art-wyycrhumvafxv98u.jpg');
-   background-size: cover;
-   background-position: center;
-   transform: scale(1) rotateX(0);
-   box-shadow: 0 0 40px rgba(0,0,0,0.2);
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
-   transform-origin: center top;
- }
- .hero-section h1{
-     color: #fff;
-   font-size: 8vw;
-   line-height: 1;
-   font-weight: 900;
- }
- .hero-section .dancing{
-   letter-spacing: 1px;
-   color: #ffeba7;
-   font-size: 25px;
-   line-height: 1;
-   font-weight: 700;
-   letter-spacing: 3px;
-   text-transform: uppercase;
-   transform: translateY(-145px) rotate(-42deg);
-   z-index: 2;
- }
- .hero-section .dancing span{
-   padding: 8px 15px;
-   padding-right: 10px;
-   display: inline-block;
-   border-radius: 5px;
-   background-color: rgba(49, 49, 49, 0.863);
- }
- @media screen and (max-width: 580px){
-   .hero-section .dancing{
-     font-size: 18px;
-   }
- }
- .hero-section p{
-   font-size: 20px;
-   line-height: 1;
-   font-weight: 700;
-   color: #ffeba7;
- }
- .hero-section p span{
-   margin-left: 15px;
-   margin-right: 15px;
-   position: relative;
-   display: inline-block;
-   cursor: pointer;
- }
- 
- body.about-on .hero-section {
-   transform: scale(0.75);
-   -webkit-transition-delay: 0ms;
-   transition-delay: 0ms;
- }
- body.contact-on .hero-section {
-   transform: scale(0.75);
-   -webkit-transition-delay: 0ms;
-   transition-delay: 0ms;
- }
- body.travel-on .hero-section {
-   transform: rotateX(-10deg);
-   -webkit-transition-delay: 0ms;
-   transition-delay: 0ms;
- }
- body.wildlife-on .hero-section {
-   transform: rotateX(-10deg);
-   -webkit-transition-delay: 0ms;
-   transition-delay: 0ms;
- }
- body.nature-on .hero-section {
-   transform: rotateX(-10deg);
-   -webkit-transition-delay: 0ms;
-   transition-delay: 0ms;
- }
- .about-text {
-     position: absolute;
-   font-size: 30px;
-   line-height: 1;
-   opacity: 0.5;
-   font-weight: 700;
-   color: #ffeba7;
-   letter-spacing: 2px;
-   top: 50%;
-   left: 20px;
-   cursor: pointer;
-   z-index: 2;
-   -webkit-writing-mode: vertical-lr;
-   writing-mode: vertical-lr;
-   transform: translateY(-50%);
-   -webkit-transition: all 200ms linear;
-   transition: all 200ms linear;
- }
- .about-text:hover {
-   opacity: 1;
- }
- .github{
-  text-decoration: none;
-  color: #ffeba7;
- }
- .about-section {
-     position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   display: block;
-   overflow: hidden;
-   height: 100vh;
-   background-color: rgb(26, 26, 26);
-   transform: translateX(-100%);
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
-   z-index: 10;
- }
- body.about-on .about-section {
-   transform: translateX(0);
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
- }
- .about-close {
-     position: absolute;
-   top: 20px;
-   right: 20px;
-   width: 30px;
-   display: block;
-   overflow: hidden;
-   height: 30px;
-   -webkit-transition: all 200ms linear;
-   transition: all 200ms linear;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: 36px 36px;
-   background-image: url('http://www.ivang-design.com/svg-load/portfolio/close.svg');
-   cursor: pointer;
-   z-index: 11;
- }
- .about-close:hover {
-     transform: rotate(90deg);
- }
- .section-center {
-     position: absolute;
-   width: 100%;
-   left: 0;
-   top: 50%;
-   transform: translateY(-50%);
-   z-index: 1;
- }
- .about-section img {
-     width: 240px;
-   height: 240px;
-   border-radius: 50%;
-   display: block;
-   margin: 0 auto;
- }
- .about-section p {
-   letter-spacing: 1px;
-   color: #fff;
-   font-size: 16px;
-   font-weight: 500;
- }
- .about-section p span {
-   letter-spacing: 1px;
-   color: #ffeba7;
-   font-size: 20px;
-   font-weight: 700;
- }
- 
- .contact-text {
-     position: absolute;
-   font-size: 30px;
-   line-height: 1;
-   opacity: 0.5;
-   font-weight: 700;
-   color: #ffeba7;
-   letter-spacing: 2px;
-   top: 50%;
-   right: 20px;
-   cursor: pointer;
-   z-index: 2;
-   -webkit-writing-mode: vertical-lr;
-   writing-mode: vertical-lr;
-   transform: translateY(-50%) rotate(180deg);
-   -webkit-transition: all 200ms linear;
-   transition: all 200ms linear;
- }
- .contact-text:hover {
-   opacity: 1;
- }
- .contact-section {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   display: block;
-   overflow: hidden;
-   height: 100vh;
-   background-color: rgb(26, 26, 26);
-   transform: translateX(100%);
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
-   z-index: 10;
- }
- body.contact-on .contact-section {
-   transform: translateX(0);
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
- }
- .contact-close {
-     position: absolute;
-   top: 20px;
-   right: 20px;
-   width: 30px;
-   display: block;
-   overflow: hidden;
-   height: 30px;
-   -webkit-transition: all 200ms linear;
-   transition: all 200ms linear;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: 36px 36px;
-   background-image: url('http://www.ivang-design.com/svg-load/portfolio/close.svg');
-   cursor: pointer;
-   z-index: 11;
- }
- .contact-close:hover {
-     transform: rotate(90deg);
- }
- .contact-center {
-     position: absolute;
-   width: 100%;
-   left: 0;
-   top: 50%;
-   transform: translateY(-50%);
-   z-index: 1;
- }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- .contact-section img {
-     width: 240px;
-   height: 240px;
-   border-radius: 50%;
-   display: block;
-   margin: 0 auto;
- }
- .contact-section p {
-   letter-spacing: 1px;
-   color: #fff;
-   font-size: 16px;
-   font-weight: 500;
- }
- .contact-section p span {
-   letter-spacing: 1px;
-   color: #ffeba7;
-   font-size: 20px;
-   font-weight: 700;
- }
- @media screen and (max-width: 580px){
-   .contact-section a{
-     font-size: 17px;
-   }
-   .contact-section .social a{
-     margin-left: 3px;
-     margin-right: 3px;
-     font-size: 13px;
-     letter-spacing: 0;
-   }
- }
- 
- .travel-section,
- .wildlife-section,
- .nature-section {
-     position: fixed;
-   top: 100%;
-   left: 0;
-   padding: 100px 0;
-   width: 100%;
-   height: 100vh;
-   display: block;
-   overflow-x: hidden;
-   overflow-y: auto;
-   background-color: rgb(26, 26, 26);
-   -webkit-transition: all 300ms linear;
-   transition: all 300ms linear;
-   z-index: 10;
- }
- .travel-close,
- .wildlife-close,
- .nature-close {
-     position: absolute;
-   top: 20px;
-   right: 20px;
-   width: 30px;
-   display: block;
-   overflow: hidden;
-   height: 30px;
-   -webkit-transition: all 200ms linear;
-   transition: all 200ms linear;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: 36px 36px;
-   background-image: url('http://www.ivang-design.com/svg-load/portfolio/close.svg');
-   cursor: pointer;
-   z-index: 11;
- }
- .travel-close:hover,
- .wildlife-close:hover,
- .nature-close:hover {
-     transform: rotate(90deg);
- }
- body.travel-on .travel-section {
-   top: 0;
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
- }
- body.wildlife-on .wildlife-section {
-   top: 0;
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
- }
- body.nature-on .nature-section {
-   top: 0;
-   -webkit-transition-delay: 400ms;
-   transition-delay: 400ms;
- }
- .travel-section img,
- .wildlife-section img,
- .nature-section img {
-   margin-top: 30px;
-   width: 100%;
-   height: 200px;
-   object-fit: cover; 
-   display: block;
-   border-radius: 4px;
-   box-shadow: 0 0 20px rgba(0,0,0,0.4);
- }
- .travel-section h3,
- .wildlife-section h3,
- .nature-section h3 {
-   font-size: 7vw;
-   line-height: 1;
-   font-weight: 700;
-   letter-spacing: 1px;
-   color: #fff;
- }
- .travel-section p,
- .wildlife-section p,
- .nature-section p {
-   font-size: 14px;
-   line-height: 1.7;
-   letter-spacing: 1px;
-   font-weight: 500;
- }
- .travel-section p span,
- .wildlife-section p span,
- .nature-section p span {
-   font-size: 20px;
-   line-height: 1.3;
-   font-weight: 700;
-   color: #ffeba7;
- }
- /* #Link to page
- ================================================== */
- 
- .logo {
-   position: fixed;
-   bottom: 30px;
-   right: 30px;
-   display: block;
-   z-index: 200000;
-   transition: all 250ms linear;
- }
- .logo img {
-   height: 26px;
-   width: auto;
-   display: block;
-   mix-blend-mode: difference;
- }
- 
- 
- @media (max-width: 1200px) {
-   .hero-section .dancing{
-     font-size: 15px;
-     transform: translateY(-80px) rotate(-45deg);
-   }
- }
- 
- @media (max-width: 967px) {
-   .hero-section h1{
-     font-size: 11vw;
-   }
-   .hero-section p{
-     font-size: 18px;
-   }
-   .hero-section p span{
-     margin-left: 10px;
-     margin-right: 10px;
-   }
-   .travel-section h3,
-   .wildlife-section h3,
-   .nature-section h3 {
-     font-size: 13vw;
-   }
- }
-    </style>
-  </head>
-  <body>
-    <div class="hero-section">	
-      <div class="about-text hover-target">Najib</div>
-      <div class="contact-text hover-target">Sameer</div>
-      <div class="section-center">
-        <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-12 text-center">
-              <h1>Jenkins<br>Project</h1>
-            </div>
-            <div class="col-12 text-center mb-2">
-              <div class="dancing"><span>Sameer & Najib</span></div>
-            </div>
-            <div class="col-12 text-center">
-              <p>
-                <span class="wildlife hover-target">aws</span> 
-                <span class="travel hover-target">cloud platforms</span> 
-                <span class="nature hover-target">azure</span>
-              </p>
-            </div>
-          </div>
+  <title>Jenkins Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body id="top">
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/022/093/913/small_2x/cloud-icon-in-flat-style-free-png.png" width="119" height="37">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/022/093/913/small_2x/cloud-icon-in-flat-style-free-png.png" width="119" height="37">
+          </a>
+
+          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
         </div>
-      </div>
-    </div>	
-    
-    <div class="about-section">	
-      <div class="about-close hover-target"></div>
-      <div class="section-center">
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#home" class="navbar-link hover-1" data-nav-toggler>Home</a>
+          </li>
+
+          
+          <li>
+            <a href="#featured" class="navbar-link hover-1" data-nav-toggler>Blogs</a>
+          </li>
+          
+          <li>
+            <a href="#class" class="navbar-link hover-1" data-nav-toggler>Tags</a>
+          </li>
+          
+          <li>
+            <a href="#" class="navbar-link hover-1" data-nav-toggler>Topics</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
+          </li>
+
+        </ul>
+
+        <div class="navbar-bottom">
+
+      </nav>
+
+      <a href="#" class="btn btn-primary">Sign in</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <section class="hero" id="home" aria-label="home">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 text-center">
-              <img src="https://assets.codepen.io/1462889/photographer.jpeg" alt="">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle">Made by Sameer & Najib</p>
+
+            <h1 class="headline headline-1 section-title">
+              <span class="span">Jenkins</span> Project
+            </h1>
+
+            <p class="hero-text">
+              Jenkins is an open-source automation server widely used for continuous integration and continuous delivery 
+              (CI/CD). When combined with cloud platforms like AWS, Azure, or Google Cloud, Jenkins enables teams to 
+              automate the entire software development lifecycle from building and testing to deploying applications at scale
+            </p>
+
+            <div class="input-wrapper">
+
+              <input type="email" name="email_address" placeholder="Type your email address" required
+                class="input-field" autocomplete="off">
+
+              <button class="btn btn-primary input-field">
+                <span class="span">Subscribe</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </button>
+
             </div>
-            <div class="col-lg-8 text-center mt-3">
-              <p class="mb-1">Cloudflare Support at Digital Ocean</p>
-            </div>
-            <div class="col-12 text-center">
-              <p class="mb-0"><span>NajibUllah</span></p>
-              <p class="mb-0"><span><a class="github" href="https://github.com/najibullah23" target="_blank"><i class="fa-brands fa-github"></i></a></span></p>
-            </div>
+
           </div>
-        </div>
-      </div>		
-    </div>
-    
-    <div class="contact-section">	
-      <div class="contact-close hover-target"></div>
-      <div class="section-center">
+      </section>
+
+
+      <section class="section feature" aria-label="feature" id="featured">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 text-center">
-              <img src="https://avatars.githubusercontent.com/u/93817524?v=4" alt="">
-            </div>
-            <div class="col-lg-8 text-center mt-3">
-              <p class="mb-1">Web Developer (Python/Django)</p>
-            </div>
-            <div class="col-12 text-center">
-              <p class="mb-0"><span>Sameer Ahmed Qureshi</span></p>
-              <p class="mb-0"><span><a class="github" href="https://github.com/sameerqureshii" target="_blank"><i class="fa-brands fa-github"></i></a></span></p>
-            </div>
-          </div>
+
+          <h2 class="headline headline-2 section-title">
+            <span class="span">Cloud Blogs</span>
+          </h2>
+
+          <p class="section-text">
+            Leading Providers of Modern Cloud Solutions
+          </p>
+
+          <ul class="feature-list">
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://assets.intersystems.com/26/bd/6a6aa762425f87ad7d5c2fe65f8c/awslogo-image.jpg" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">3 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      Which AWS services are most essential for modern web applications?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6ea43ab7657dfc9b/68af2624008f0d4e9a546b25/salesforce-SDym_Photography-Alamy.png?width=1280&auto=webp&quality=80&disable=upscale" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">7 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      What role does Salesforce play in digital marketing and sales automation?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi_w4xIvzOWvhoZHrc8O1YGUjuDv3lCqHRlQ&s" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">6 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      How does Azure compare with AWS in terms of developer-friendly tools?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG0neVA6Znwe4bcKAifhvQNrS8Hqdf4BJXgw&s" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">5 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      What advantages does GCP offer for Kubernetes and containerized applications?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://profit.pakistantoday.com.pk/wp-content/uploads/2020/11/blog_post_20.png" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">6 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      How does Oracle Cloud stand out in database management solutions?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83-t2lNs1Ch8EDfmfRwScY6KD5oJxyQUUmA&s" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">6 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      How does Tencent Cloud support gaming and entertainment industries?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyUxdC_f5YQTD4FAVJXdmaasFUe03oIG7_YQ&s" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">4 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      What makes Alibaba Cloud a strong competitor in Asia-Pacific markets?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card feature-card">
+
+                <figure class="card-banner img-holder" style="--width: 1602; --height: 903;">
+                  <img src="https://futurumgroup.com/wp-content/uploads/2022/02/IBM-Z-Launches-on-IBM-Cloud-Simplifying-Hybrid-Cloud-App-Modernization.jpg" width="1602" height="903" loading="lazy"
+                    alt="Self-observation is the first step of inner unfolding" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-wrapper">
+                    <div class="card-tag">
+                      <a href="#" class="span hover-2">#cloud</a>
+
+                      <a href="#" class="span hover-2">#services</a>
+                    </div>
+
+                    <div class="wrapper">
+                      <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">5 mins read</span>
+                    </div>
+                  </div>
+
+                  <h3 class="headline headline-3">
+                    <a href="#" class="card-title hover-2">
+                      How does IBM Cloud specialize in hybrid and multi-cloud solutions?
+                    </a>
+                  </h3>
+
+                  <div class="card-wrapper">
+                    <a href="#" class="card-btn">Read more</a>
+                  </div>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <a href="#" class="btn btn-secondary">
+            <span class="span">Show More Posts</span>
+
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+
         </div>
-      </div>	
-    </div>
-    
-    <div class="travel-section">	
-      <div class="travel-close hover-target"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 text-center">
-            <h3>Cloud Platforms</h3>
-          </div>
-          <div class="col-12 mt-3 text-center">
-            <p><span>Leading Providers of Modern Cloud Solutions</span></p>
-          </div>
-          <div class="col-12 text-center">
-            <p>
-              Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS)<br>
-              Global scalability with data centers worldwide<br>
-              Secure, cost efficient, and flexible deployments<br>
-              Powering innovation with AI, analytics, and automation
-            </p>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://assets.intersystems.com/26/bd/6a6aa762425f87ad7d5c2fe65f8c/awslogo-image.jpg" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi_w4xIvzOWvhoZHrc8O1YGUjuDv3lCqHRlQ&s" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG0neVA6Znwe4bcKAifhvQNrS8Hqdf4BJXgw&s" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://futurumgroup.com/wp-content/uploads/2022/02/IBM-Z-Launches-on-IBM-Cloud-Simplifying-Hybrid-Cloud-App-Modernization.jpg" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://eu-images.contentstack.com/v3/assets/blt6d90778a997de1cd/blt6ea43ab7657dfc9b/68af2624008f0d4e9a546b25/salesforce-SDym_Photography-Alamy.png?width=1280&auto=webp&quality=80&disable=upscale" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://profit.pakistantoday.com.pk/wp-content/uploads/2020/11/blog_post_20.png" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83-t2lNs1Ch8EDfmfRwScY6KD5oJxyQUUmA&s" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyUxdC_f5YQTD4FAVJXdmaasFUe03oIG7_YQ&s" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSthpM3CMUEUDCIJDgtbILvgk7butWxOFqx4w&s" alt="">
-          </div>
+      </section>
+
+      <section class="tags" id="class"  aria-labelledby="tag-label">
+        <div class="container">
+
+          <h2 class="headline headline-2 section-title" id="tag-label">
+            <span class="span">Popular Clouds</span>
+          </h2>
+
+          <p class="section-text">
+            Most searched cloud platforms on google
+          </p>
+
+          <ul class="grid-list">
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://logos-world.net/wp-content/uploads/2021/08/Amazon-Web-Services-AWS-Logo.png" width="32" height="32" loading="lazy" alt="Plant">
+
+                <p class="btn-text">AWS</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://www.pngall.com/wp-content/uploads/4/Oracle-PNG-Pic.png" width="32" height="32" loading="lazy" alt="Food">
+
+                <p class="btn-text">Oracle</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFZspODjlYFi6OyL6ovNRz-hSbKr-tjI14Zw&s" width="32" height="32" loading="lazy" alt="Travel">
+
+                <p class="btn-text">GCP</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/512px-Salesforce.com_logo.svg.png" width="32" height="32" loading="lazy" alt="Fashion">
+                <p class="btn-text">Salesforce</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Tencent_Cloud_Logo.svg/1280px-Tencent_Cloud_Logo.svg.png" width="32" height="32" loading="lazy" alt="Minimal">
+
+                <p class="btn-text">Tencent</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://cdn.freebiesupply.com/images/large/2x/cisco-logo-transparent.png" width="32" height="32" loading="lazy" alt="Business">
+
+                <p class="btn-text">Cisco</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-sap-logo-icon-svg-png-download-2945134.png?f=webp" width="32" height="32" loading="lazy" alt="Culture">
+
+                <p class="btn-text">SAP</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/2048px-Microsoft_Azure.svg.png" width="32" height="32" loading="lazy" alt="Lifestyle">
+
+                <p class="btn-text">Azure</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/alibaba-cloud-icon.png" width="32" height="32" loading="lazy" alt="Space">
+
+                <p class="btn-text">Alibaba</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://images.icon-icons.com/2699/PNG/512/ibm_cloud_logo_icon_169019.png" width="32" height="32" loading="lazy" alt="Animal">
+
+                <p class="btn-text">IBM Cloud</p>
+              </button>
+            </li>
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png" width="32" height="32" loading="lazy" alt="Interior">
+
+                <p class="btn-text">Cloudflare</p>
+              </button>
+            </li>
+
+
+            <li>
+              <button class="card tag-btn">
+                <img src="https://images.seeklogo.com/logo-png/6/2/huawei-logo-png_seeklogo-68529.png" width="32" height="32" loading="lazy" alt="Nature">
+
+                <p class="btn-text">Huawei</p>
+              </button>
+            </li>
+
+          </ul>
+
         </div>
-      </div>
-    </div>
-    
-    <div class="wildlife-section">	
-      <div class="wildlife-close hover-target"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 text-center">
-            <h3>AWS</h3>
-          </div>
-          <div class="col-12 mt-3 text-center">
-            <p><span>Amazon Web Services (AWS) Cloud Platform</span></p>
-          </div>
-          <div class="col-12 text-center">
-            <p>
-              Scalable infrastructure on demand<br>
-              Global data centers for high availability<br>
-              Pay as you go pricing model<br>
-              Secure and reliable cloud solutions
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+
+      <div class="card footer">
+
+        <div class="section footer-top">
+
+          <div class="footer-brand">
+
+            <a href="#" class="logo">
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/022/093/913/small_2x/cloud-icon-in-flat-style-free-png.png" width="119" height="37" loading="lazy" alt="Wren logo">
+            </a>
+
+            <p class="footer-text">
+              Jenkins is an open-source automation server widely used for continuous integration and continuous delivery (CI/CD).
             </p>
+
+            <p class="footer-list-title">Address</p>
+
+            <address class="footer-text address">
+              Iqra University <br>
+              North Campus, Karachi
+            </address>
+
           </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://miro.medium.com/1*L3s3M5sjp4c37uhjDAR4uQ.png" alt="">
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Categories</p>
+
+            <ul>
+
+              <li>
+                <a href="#" class="footer-link hover-2">AWS</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Google Cloud</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Azure</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">SAP</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Oracle</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Salesforce</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Tencent</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Cisco</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Alibaba</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">IBM Cloud</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Cloudflare</a>
+              </li>
+
+              <li>
+                <a href="#" class="footer-link hover-2">Huawei</a>
+              </li>
+
+            </ul>
+
           </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlE1AKvCSngmdskOqyK9UrA3dsQpXqalB4WQ&s" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://mindmajix.com/_next/image?url=https%3A%2F%2Fcdn.mindmajix.com%2Fblog%2Fimages%2Faws-architecture-170601.jpg&w=2048&q=75" alt="">
-          </div>
-      </div>
-    </div>
-    
-    <div class="nature-section">	
-      <div class="nature-close hover-target"></div>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 text-center">
-            <h3>Azure</h3>
-          </div>
-          <div class="col-12 mt-3 text-center">
-            <p><span>Microsoft Azure Cloud Platform</span></p>
-          </div>
-          <div class="col-12 text-center">
-            <p>
-              Enterprise grade security & compliance<br>
-              Hybrid cloud integration with on premises systems<br>
-              AI, analytics, and machine learning services<br>
-              Flexible pricing with global scalability
+
+          <div class="footer-list">
+
+            <p class="footer-list-title">Newsletter</p>
+
+            <p class="footer-text">
+              Sign up to be first to receive the latest stories inspiring us, case studies, and industry news.
             </p>
+
+            <div class="input-wrapper">
+              <input type="text" name="name" placeholder="Your name" required class="input-field" autocomplete="off">
+
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+            </div>
+
+            <div class="input-wrapper">
+              <input type="email" name="email_address" placeholder="Emaill address" required class="input-field"
+                autocomplete="off">
+
+              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+            </div>
+
+            <a href="#" class="btn btn-primary">
+              <span class="span">Subscribe</span>
+
+              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+            </a>
+
           </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://intercept.cloud/media/jv3jyweu/cn_microsoft-azure-logo.webp?rmode=max&width=773&height=454" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://d2cest1yk6hx2d.cloudfront.net/uninets-001/store/1619/blog/what-is-Microsoft-azure.jpg" alt="">
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPaMRjPe0Hdr90_suJ_1VIbslx-cybdHpKzg&s" alt="">
-          </div>
+
         </div>
+
+        <div class="footer-bottom">
+
+          <p class="copyright">
+            &copy; Developed by <a href="#" class="copyright-link">Sameer & Najib</a>
+          </p>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="https://github.com/sameerqureshii" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+
+                <span class="span">Sameer</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://github.com/najibullah23" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+
+                <span class="span">Najib</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
       </div>
+
     </div>
-    
-    <div class='cursor' id="cursor"></div>
-    <div class='cursor2' id="cursor2"></div>
-    <div class='cursor3' id="cursor3"></div>
-  
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script>
-      (function($) { "use strict";
-	
+  </footer>
 
-    document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
-        t.style.left = n.clientX + "px", 
-		t.style.top = n.clientY + "px", 
-		e.style.left = n.clientX + "px", 
-		e.style.top = n.clientY + "px", 
-		i.style.left = n.clientX + "px", 
-		i.style.top = n.clientY + "px"
-    });
-    var t = document.getElementById("cursor"),
-        e = document.getElementById("cursor2"),
-        i = document.getElementById("cursor3");
-    function n(t) {
-        e.classList.add("hover"), i.classList.add("hover")
-    }
-    function s(t) {
-        e.classList.remove("hover"), i.classList.remove("hover")
-    }
-    s();
-    for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
-        o(r[a])
-    }
-    function o(t) {
-        t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
-    }
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+  </a>
 
-	
-	$(".about-text").on('click', function () {
-		$("body").addClass("about-on");
-	});
-	$(".about-close").on('click', function () {
-		$("body").removeClass("about-on");
-	});
-	
-	$(".contact-text").on('click', function () {
-		$("body").addClass("contact-on");
-	});
-	$(".contact-close").on('click', function () {
-		$("body").removeClass("contact-on");
-	});
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-		
-	$(".travel").on('click', function () {
-		$("body").addClass("travel-on");
-	});
-	$(".travel-close").on('click', function () {
-		$("body").removeClass("travel-on");
-	});
-
-		
-	$(".wildlife").on('click', function () {
-		$("body").addClass("wildlife-on");
-	});
-	$(".wildlife-close").on('click', function () {
-		$("body").removeClass("wildlife-on");
-	});
-
-		
-	$(".nature").on('click', function () {
-		$("body").addClass("nature-on");
-	});
-	$(".nature-close").on('click', function () {
-		$("body").removeClass("nature-on");
-	});
-	
-})(jQuery); 
-    </script>
-  </body>
+</body>
 </html>
